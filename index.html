@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CoreChiperGame</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-glow"></div>
+
+  <div id="bootScreen" class="screen boot-screen">
+    <div class="boot-card">
+      <h1 class="boot-title">CoreChiperGame</h1>
+      <div class="boot-meter">
+        <div id="bootFill" class="boot-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="menuScreen" class="screen menu-screen hidden">
+    <div class="menu-card glass">
+      <div class="menu-copy">
+        <p class="eyebrow">Open World Adventure</p>
+        <h1>CoreChiperGame</h1>
+        <p class="subtitle">
+          Jelajahi lautan bergerak, desa penduduk, dungeon, cuaca ekstrem, kendaraan, companion, quest, dan pertarungan real-time dalam satu game website.
+        </p>
+      </div>
+      <div class="menu-actions">
+        <button id="openWorldBtn" class="primary-btn menu-btn">New Journey</button>
+        <button id="continueBtn" class="ghost-btn menu-btn">Continue</button>
+        <button id="openSettingsBtn" class="ghost-btn menu-btn">Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="worldScreen" class="screen panel-screen hidden">
+    <div class="panel-card glass">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Create Journey</p>
+          <h2>World Setup</h2>
+        </div>
+        <button id="closeWorldBtn" class="ghost-btn small-btn">Back</button>
+      </div>
+      <div class="form-grid">
+        <label class="field">
+          <span>Hero Name</span>
+          <input id="worldNameInput" type="text" value="Aru" maxlength="24">
+        </label>
+        <label class="field">
+          <span>World Size</span>
+          <select id="worldSizeSelect">
+            <option value="normal">Normal</option>
+            <option value="wide">Wide</option>
+            <option value="massive">Massive</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Difficulty</span>
+          <select id="difficultySelect">
+            <option value="relaxed">Relaxed</option>
+            <option value="adventure" selected>Adventure</option>
+            <option value="legend">Legend</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Region Mood</span>
+          <select id="worldThemeSelect">
+            <option value="meadow">Meadow Coast</option>
+            <option value="sunset">Sunset Frontier</option>
+            <option value="storm">Storm Realm</option>
+          </select>
+        </label>
+      </div>
+      <div class="panel-actions">
+        <button id="createWorldBtn" class="primary-btn">Create World</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsScreen" class="screen panel-screen hidden">
+    <div class="panel-card glass">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Settings</p>
+          <h2>Game Settings</h2>
+        </div>
+        <button id="closeSettingsBtn" class="ghost-btn small-btn">Back</button>
+      </div>
+      <div class="form-grid">
+        <label class="field">
+          <span>Music</span>
+          <select id="musicSetting">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Mobile Controls</span>
+          <select id="mobileControlsSetting">
+            <option value="auto">Auto</option>
+            <option value="show">Always Show</option>
+            <option value="hide">Hide</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Weather FX</span>
+          <select id="weatherSetting">
+            <option value="full">Full</option>
+            <option value="light">Light</option>
+            <option value="off">Off</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <header class="topbar glass">
+      <div>
+        <p class="eyebrow">RPG Adventure Web</p>
+        <h1>CoreChiperGame</h1>
+        <p class="subtitle">Satu dunia website penuh misi, kendaraan, lautan, companion, dan dungeon.</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="startBtn" class="primary-btn">Menu</button>
+        <button id="audioBtn" class="ghost-btn">OST Off</button>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="game-panel glass">
+        <div class="hud-row">
+          <div class="stat-box">
+            <span>Health</span>
+            <strong id="healthLabel">100 / 100</strong>
+            <div class="meter"><div id="healthFill" class="fill hp"></div></div>
+          </div>
+          <div class="stat-box">
+            <span>Energy</span>
+            <strong id="energyLabel">100 / 100</strong>
+            <div class="meter"><div id="energyFill" class="fill energy"></div></div>
+          </div>
+          <div class="stat-box compact">
+            <span>Time</span>
+            <strong id="dayLabel">Day</strong>
+          </div>
+          <div class="stat-box compact">
+            <span>Mode</span>
+            <strong id="modeLabel">Explore</strong>
+          </div>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="gameCanvas" width="1280" height="720"></canvas>
+        </div>
+
+        <div class="hotbar" id="hotbar"></div>
+
+        <div class="mobile-controls">
+          <div id="joystickBase" class="joystick-base">
+            <div id="joystickKnob" class="joystick-knob"></div>
+          </div>
+          <div class="action-grid">
+            <button class="action-btn attack" data-mobile-action="attack">ATK</button>
+            <button class="action-btn interact" data-mobile-action="interact">USE</button>
+            <button class="action-btn skill" data-mobile-action="skill">SKL</button>
+            <button class="action-btn mount" data-mobile-action="mount">RIDE</button>
+            <button class="action-btn craft" data-mobile-action="craft">MAKE</button>
+            <button class="action-btn inventory" data-mobile-action="inventory">BAG</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="glass panel">
+          <div class="panel-head">
+            <span>Party</span>
+            <strong id="partyLabel">Solo Run</strong>
+          </div>
+          <div class="inventory-list" id="partyList"></div>
+        </section>
+
+        <section class="glass panel">
+          <div class="panel-head">
+            <span>Inventory</span>
+            <strong id="selectedItem">Traveler Kit</strong>
+          </div>
+          <div class="inventory-list" id="inventoryList"></div>
+        </section>
+
+        <section class="glass panel">
+          <div class="panel-head">
+            <span>Quest</span>
+            <strong id="objectiveText">Find the village elder</strong>
+          </div>
+          <div class="recipe-list" id="questList"></div>
+        </section>
+
+        <section class="glass panel">
+          <div class="panel-head">
+            <span>World Feed</span>
+            <strong id="weatherLabel">Clear Sky</strong>
+          </div>
+          <div id="eventLog" class="event-log"></div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

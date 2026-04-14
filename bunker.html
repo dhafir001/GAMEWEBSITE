@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CoreChiperGame - Bunker Aegis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-glow"></div>
+  <div class="shell">
+    <main class="main-grid">
+      <section class="game-panel glass">
+        <div class="canvas-wrap">
+          <canvas id="bunkerCanvas" width="1280" height="720"></canvas>
+        </div>
+        <div class="mobile-controls">
+          <div id="joystickBase" class="joystick-base">
+            <div id="joystickKnob" class="joystick-knob"></div>
+          </div>
+          <div class="action-grid">
+            <button class="action-btn attack" data-mobile-action="interact">USE</button>
+            <button class="action-btn interact" data-mobile-action="dash">MOVE</button>
+            <button class="action-btn skill" data-mobile-action="back">EXIT</button>
+            <button class="action-btn mount" data-mobile-action="alarm">ALRM</button>
+            <button class="action-btn craft" data-mobile-action="stash">STASH</button>
+            <button class="action-btn inventory" data-mobile-action="bus">BUS</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="bunker.js"></script>
+</body>
+</html>
